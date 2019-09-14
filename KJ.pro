@@ -27,11 +27,13 @@ CONFIG += c++11
 SOURCES += \
         main.cpp \
         mainwindow.cpp \
-    schemedialog.cpp
+    schemedialog.cpp \
+    schemeparams.cpp
 
 HEADERS += \
         mainwindow.h \
-    schemedialog.h
+    schemedialog.h \
+    schemeparams.h
 
 FORMS += \
         mainwindow.ui \
