@@ -44,6 +44,7 @@ void MainWindow::showThis()
 {
     this->show();
     showParams();
+    e_par_ptr->Init(s_par_ptr->resistors, s_par_ptr->capasitors, s_par_ptr->inductances);
 }
 
 void MainWindow::on_ID_EXIT_triggered()

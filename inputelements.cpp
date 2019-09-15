@@ -90,7 +90,6 @@ void InputElements::on_next_element_clicked()
     this->hide();
     /* Здесь считывается информация  в вектор */
     (this->*read_par[element_id])();
-    resetValue();
     if (element_id + 1 == max_id)
     {
         element_id = 0;
@@ -112,4 +111,6 @@ void InputElements::on_next_element_clicked()
         }
         this->show();
     }
+    resetValue();
+
 }
