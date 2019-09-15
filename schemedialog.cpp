@@ -6,6 +6,7 @@ SchemeDialog::SchemeDialog(QWidget *parent) :
     ui(new Ui::SchemeDialog)
 {
     ui->setupUi(this);
+    this->setWindowTitle(QString("Размерность схемы"));
 }
 
 SchemeDialog::~SchemeDialog()
@@ -13,19 +14,27 @@ SchemeDialog::~SchemeDialog()
     delete ui;
 }
 
-void SchemeDialog::getPtr(std::shared_ptr<SchemeParams> &ptr)
+void SchemeDialog::setPtr(std::shared_ptr<SchemeParams> &ptr)
 {
-    s_par = ptr;
+    s_par_ptr = ptr;
 }
 
 void SchemeDialog::on_OK_clicked()
 {
-    SchemeParams p(ui->node_count->value(), ui->resistors->value(), ui->capacitors->value(), ui->inductances->value(),
-                   ui->itun->value(), ui->inun->value(), ui->itut->value(), ui->inut->value(),
-                   ui->bp_transistors->value(), ui->up_transistors->value(), ui->amplifiers->value(),
-                   ui->p_o_alplifiers->value(), ui->transformers->value(), ui->perf_tranformers->value());
-    SchemeParams *t = s_par.get();
-    (*t) = std::move(p);
+    s_par_ptr->node_count = ui->node_count->value();
+    s_par_ptr->resistors = ui->resistors->value();
+    s_par_ptr->capasitors = ui->capacitors->value();
+    s_par_ptr->inductances = ui->inductances->value();
+    s_par_ptr->itun = ui->itun->value();
+    s_par_ptr->inun = ui->inun->value();
+    s_par_ptr->itut = ui->itut->value();
+    s_par_ptr->inut = ui->inut->value();
+    s_par_ptr->b_p_transistors = ui->bp_transistors->value();
+    s_par_ptr->u_p_transistors = ui->up_transistors->value();
+    s_par_ptr->oper_ampfilers = ui->amplifiers->value();
+    s_par_ptr->transformers = ui->transformers->value();
+    s_par_ptr->p_o_ampfilers = ui->p_o_alplifiers->value();
+    s_par_ptr->perf_transistors = ui->perf_tranformers->value();
     this->hide();
     emit showMainWindow();
 }

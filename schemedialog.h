@@ -16,7 +16,7 @@ class SchemeDialog : public QDialog
 public:
     explicit SchemeDialog(QWidget *parent = nullptr);
     ~SchemeDialog();
-    void getPtr(std::shared_ptr<SchemeParams> &ptr);
+    void setPtr(std::shared_ptr<SchemeParams> &ptr);
 
 signals:
     void showMainWindow();
@@ -26,7 +26,7 @@ private slots:
 
 private:
     Ui::SchemeDialog *ui;
-    std::shared_ptr<SchemeParams> s_par;
+    std::shared_ptr<SchemeParams> s_par_ptr;
 };
 
 #endif // SCHEMEDIALOG_H

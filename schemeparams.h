@@ -15,10 +15,11 @@ struct SchemeParams
     void operator=(SchemeParams sp);
     void Swap(SchemeParams sp);
 
+
     int node_count;
     int resistors;
     int capasitors;
-    int inductions;
+    int inductances;
     int itun;
     int inun;
     int itut;

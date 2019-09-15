@@ -10,17 +10,27 @@
     <height>339</height>
    </rect>
   </property>
+  <property name="font">
+   <font>
+    <pointsize>12</pointsize>
+   </font>
+  </property>
   <property name="windowTitle">
-   <string>Размерность схемы</string>
+   <string>0</string>
   </property>
   <widget class="QPushButton" name="OK">
    <property name="geometry">
     <rect>
-     <x>280</x>
-     <y>284</y>
-     <width>121</width>
-     <height>31</height>
+     <x>310</x>
+     <y>280</y>
+     <width>151</width>
+     <height>40</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>Ок</string>
@@ -176,7 +186,7 @@
      <x>370</x>
      <y>20</y>
      <width>160</width>
-     <height>21</height>
+     <height>25</height>
     </rect>
    </property>
    <property name="font">
@@ -194,7 +204,7 @@
      <x>370</x>
      <y>60</y>
      <width>160</width>
-     <height>21</height>
+     <height>25</height>
     </rect>
    </property>
    <property name="font">
@@ -212,7 +222,7 @@
      <x>370</x>
      <y>100</y>
      <width>160</width>
-     <height>21</height>
+     <height>25</height>
     </rect>
    </property>
    <property name="font">
@@ -230,7 +240,7 @@
      <x>370</x>
      <y>140</y>
      <width>160</width>
-     <height>21</height>
+     <height>25</height>
     </rect>
    </property>
    <property name="font">
@@ -248,7 +258,7 @@
      <x>370</x>
      <y>180</y>
      <width>160</width>
-     <height>21</height>
+     <height>25</height>
     </rect>
    </property>
    <property name="font">
@@ -266,7 +276,7 @@
      <x>370</x>
      <y>220</y>
      <width>160</width>
-     <height>21</height>
+     <height>25</height>
     </rect>
    </property>
    <property name="font">
@@ -283,9 +293,14 @@
     <rect>
      <x>20</x>
      <y>60</y>
-     <width>71</width>
+     <width>75</width>
      <height>25</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+    </font>
    </property>
   </widget>
   <widget class="QSpinBox" name="capacitors">
@@ -293,9 +308,14 @@
     <rect>
      <x>20</x>
      <y>100</y>
-     <width>71</width>
+     <width>75</width>
      <height>25</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+    </font>
    </property>
   </widget>
   <widget class="QSpinBox" name="inductances">
@@ -303,9 +323,14 @@
     <rect>
      <x>20</x>
      <y>140</y>
-     <width>71</width>
+     <width>75</width>
      <height>25</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+    </font>
    </property>
   </widget>
   <widget class="QSpinBox" name="itun">
@@ -313,9 +338,14 @@
     <rect>
      <x>20</x>
      <y>180</y>
-     <width>71</width>
+     <width>75</width>
      <height>25</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+    </font>
    </property>
   </widget>
   <widget class="QSpinBox" name="inun">
@@ -323,9 +353,14 @@
     <rect>
      <x>20</x>
      <y>220</y>
-     <width>71</width>
+     <width>75</width>
      <height>25</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+    </font>
    </property>
   </widget>
   <widget class="QSpinBox" name="itut">
@@ -333,9 +368,14 @@
     <rect>
      <x>20</x>
      <y>260</y>
-     <width>71</width>
+     <width>75</width>
      <height>25</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+    </font>
    </property>
   </widget>
   <widget class="QSpinBox" name="inut">
@@ -343,9 +383,14 @@
     <rect>
      <x>20</x>
      <y>300</y>
-     <width>71</width>
+     <width>75</width>
      <height>25</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+    </font>
    </property>
   </widget>
   <widget class="QSpinBox" name="perf_tranformers">
@@ -353,9 +398,14 @@
     <rect>
      <x>280</x>
      <y>220</y>
-     <width>71</width>
+     <width>75</width>
      <height>25</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+    </font>
    </property>
   </widget>
   <widget class="QSpinBox" name="transformers">
@@ -363,9 +413,14 @@
     <rect>
      <x>280</x>
      <y>140</y>
-     <width>71</width>
+     <width>75</width>
      <height>25</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+    </font>
    </property>
   </widget>
   <widget class="QSpinBox" name="amplifiers">
@@ -373,9 +428,14 @@
     <rect>
      <x>280</x>
      <y>100</y>
-     <width>71</width>
+     <width>75</width>
      <height>25</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+    </font>
    </property>
   </widget>
   <widget class="QSpinBox" name="up_transistors">
@@ -383,9 +443,14 @@
     <rect>
      <x>280</x>
      <y>60</y>
-     <width>71</width>
+     <width>75</width>
      <height>25</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+    </font>
    </property>
   </widget>
   <widget class="QSpinBox" name="p_o_alplifiers">
@@ -393,9 +458,14 @@
     <rect>
      <x>280</x>
      <y>180</y>
-     <width>71</width>
+     <width>75</width>
      <height>25</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+    </font>
    </property>
   </widget>
   <widget class="QSpinBox" name="bp_transistors">
@@ -403,9 +473,14 @@
     <rect>
      <x>280</x>
      <y>20</y>
-     <width>71</width>
+     <width>75</width>
      <height>25</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+    </font>
    </property>
   </widget>
   <widget class="QSpinBox" name="node_count">
@@ -413,9 +488,14 @@
     <rect>
      <x>20</x>
      <y>20</y>
-     <width>71</width>
+     <width>75</width>
      <height>25</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+    </font>
    </property>
   </widget>
  </widget>
