@@ -39,7 +39,8 @@
      <string>Описание</string>
     </property>
     <addaction name="ID_CONS"/>
-    <addaction name="ID_FILE"/>
+    <addaction name="ID_IFILE"/>
+    <addaction name="ID_OFILE"/>
    </widget>
    <widget class="QMenu" name="direction">
     <property name="title">
@@ -86,7 +87,7 @@
     <string>Ввод с клавиатуры</string>
    </property>
   </action>
-  <action name="ID_FILE">
+  <action name="ID_IFILE">
    <property name="text">
     <string>Ввод из файла</string>
    </property>
@@ -135,6 +136,11 @@
   <action name="ID_INTERNET">
    <property name="text">
     <string>Интернет</string>
+   </property>
+  </action>
+  <action name="ID_OFILE">
+   <property name="text">
+    <string>Вывод в файл</string>
    </property>
   </action>
  </widget>

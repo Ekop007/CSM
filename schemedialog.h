@@ -19,14 +19,14 @@ public:
     void setPtr(std::shared_ptr<SchemeParams> &ptr);
 
 signals:
-    void showMainWindow();
+    void nextInputWindow();
 
 private slots:
     void on_OK_clicked();
 
 private:
     Ui::SchemeDialog *ui;
-    std::shared_ptr<SchemeParams> s_par_ptr;
+    std::shared_ptr<SchemeParams> scheme_params_ptr;
 };
 
 #endif // SCHEMEDIALOG_H

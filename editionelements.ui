@@ -1,96 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>InputElements</class>
- <widget class="QDialog" name="InputElements">
+ <class>EditionElements</class>
+ <widget class="QDialog" name="EditionElements">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>713</width>
-    <height>302</height>
+    <width>1000</width>
+    <height>410</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <widget class="QSpinBox" name="node_nm">
-   <property name="geometry">
-    <rect>
-     <x>240</x>
-     <y>90</y>
-     <width>110</width>
-     <height>25</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>12</pointsize>
-    </font>
-   </property>
-   <property name="minimum">
-    <number>0</number>
-   </property>
-   <property name="maximum">
-    <number>100000</number>
-   </property>
-   <property name="value">
-    <number>0</number>
-   </property>
-  </widget>
-  <widget class="QLabel" name="p1">
-   <property name="geometry">
-    <rect>
-     <x>370</x>
-     <y>130</y>
-     <width>120</width>
-     <height>25</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>12</pointsize>
-    </font>
-   </property>
-   <property name="text">
-    <string>ИТУТ</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="next_element">
-   <property name="geometry">
-    <rect>
-     <x>300</x>
-     <y>250</y>
-     <width>120</width>
-     <height>30</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Следующий</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="name_element">
-   <property name="geometry">
-    <rect>
-     <x>20</x>
-     <y>10</y>
-     <width>150</width>
-     <height>25</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>12</pointsize>
-    </font>
-   </property>
-   <property name="text">
-    <string>Резистор R</string>
-   </property>
-  </widget>
   <widget class="QLabel" name="np_l">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>50</y>
+     <x>300</x>
+     <y>150</y>
      <width>100</width>
      <height>25</height>
     </rect>
@@ -104,11 +31,29 @@
     <string>Узел n+</string>
    </property>
   </widget>
+  <widget class="QLabel" name="p5">
+   <property name="geometry">
+    <rect>
+     <x>650</x>
+     <y>310</y>
+     <width>120</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>ИТУТ</string>
+   </property>
+  </widget>
   <widget class="QLabel" name="nm_l">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>90</y>
+     <x>300</x>
+     <y>190</y>
      <width>100</width>
      <height>25</height>
     </rect>
@@ -122,44 +67,11 @@
     <string>Узел n-</string>
    </property>
   </widget>
-  <widget class="QLabel" name="p0">
+  <widget class="QSpinBox" name="node_nm">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>130</y>
-     <width>181</width>
-     <height>21</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>12</pointsize>
-    </font>
-   </property>
-   <property name="text">
-    <string>Сопротивление (КОм)</string>
-   </property>
-  </widget>
-  <widget class="QDoubleSpinBox" name="p0_value">
-   <property name="geometry">
-    <rect>
-     <x>240</x>
-     <y>130</y>
-     <width>110</width>
-     <height>25</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>12</pointsize>
-    </font>
-   </property>
-  </widget>
-  <widget class="QSpinBox" name="node_np">
-   <property name="geometry">
-    <rect>
-     <x>240</x>
-     <y>50</y>
+     <x>520</x>
+     <y>190</y>
      <width>110</width>
      <height>25</height>
     </rect>
@@ -170,51 +82,18 @@
     </font>
    </property>
    <property name="minimum">
-    <number>0</number>
+    <number>1</number>
    </property>
    <property name="maximum">
     <number>100000</number>
    </property>
-   <property name="value">
-    <number>0</number>
-   </property>
   </widget>
-  <widget class="QLineEdit" name="element_number">
-   <property name="enabled">
-    <bool>false</bool>
-   </property>
+  <widget class="QLabel" name="p3">
    <property name="geometry">
     <rect>
-     <x>240</x>
-     <y>10</y>
-     <width>110</width>
-     <height>25</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>12</pointsize>
-    </font>
-   </property>
-   <property name="mouseTracking">
-    <bool>true</bool>
-   </property>
-   <property name="acceptDrops">
-    <bool>true</bool>
-   </property>
-   <property name="text">
-    <string>1</string>
-   </property>
-   <property name="frame">
-    <bool>true</bool>
-   </property>
-  </widget>
-  <widget class="QLabel" name="kp_l">
-   <property name="geometry">
-    <rect>
-     <x>370</x>
-     <y>50</y>
-     <width>100</width>
+     <x>650</x>
+     <y>270</y>
+     <width>120</width>
      <height>25</height>
     </rect>
    </property>
@@ -224,15 +103,15 @@
     </font>
    </property>
    <property name="text">
-    <string>Узел k+</string>
+    <string>ИТУТ</string>
    </property>
   </widget>
-  <widget class="QSpinBox" name="node_kp">
+  <widget class="QLabel" name="p1">
    <property name="geometry">
     <rect>
-     <x>590</x>
-     <y>50</y>
-     <width>110</width>
+     <x>650</x>
+     <y>230</y>
+     <width>120</width>
      <height>25</height>
     </rect>
    </property>
@@ -241,21 +120,15 @@
      <pointsize>12</pointsize>
     </font>
    </property>
-   <property name="minimum">
-    <number>0</number>
-   </property>
-   <property name="maximum">
-    <number>100000</number>
-   </property>
-   <property name="value">
-    <number>0</number>
+   <property name="text">
+    <string>ИТУТ</string>
    </property>
   </widget>
   <widget class="QLabel" name="km_l">
    <property name="geometry">
     <rect>
-     <x>370</x>
-     <y>90</y>
+     <x>650</x>
+     <y>190</y>
      <width>100</width>
      <height>25</height>
     </rect>
@@ -269,11 +142,11 @@
     <string>Узел k-</string>
    </property>
   </widget>
-  <widget class="QSpinBox" name="node_km">
+  <widget class="QSpinBox" name="node_kp">
    <property name="geometry">
     <rect>
-     <x>590</x>
-     <y>90</y>
+     <x>870</x>
+     <y>150</y>
      <width>110</width>
      <height>25</height>
     </rect>
@@ -284,38 +157,17 @@
     </font>
    </property>
    <property name="minimum">
-    <number>0</number>
+    <number>1</number>
    </property>
    <property name="maximum">
     <number>100000</number>
-   </property>
-   <property name="value">
-    <number>0</number>
-   </property>
-  </widget>
-  <widget class="QLabel" name="p3">
-   <property name="geometry">
-    <rect>
-     <x>370</x>
-     <y>170</y>
-     <width>120</width>
-     <height>25</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>12</pointsize>
-    </font>
-   </property>
-   <property name="text">
-    <string>ИТУТ</string>
    </property>
   </widget>
   <widget class="QLabel" name="p2">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>170</y>
+     <x>300</x>
+     <y>270</y>
      <width>181</width>
      <height>21</height>
     </rect>
@@ -329,28 +181,13 @@
     <string>Сопротивление (КОм)</string>
    </property>
   </widget>
-  <widget class="QDoubleSpinBox" name="p2_value">
+  <widget class="QLabel" name="p0">
    <property name="geometry">
     <rect>
-     <x>240</x>
-     <y>170</y>
-     <width>110</width>
-     <height>25</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>12</pointsize>
-    </font>
-   </property>
-  </widget>
-  <widget class="QLabel" name="p5">
-   <property name="geometry">
-    <rect>
-     <x>370</x>
-     <y>210</y>
-     <width>120</width>
-     <height>25</height>
+     <x>300</x>
+     <y>230</y>
+     <width>181</width>
+     <height>21</height>
     </rect>
    </property>
    <property name="font">
@@ -359,14 +196,14 @@
     </font>
    </property>
    <property name="text">
-    <string>ИТУТ</string>
+    <string>Сопротивление (КОм)</string>
    </property>
   </widget>
   <widget class="QLabel" name="p4">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>210</y>
+     <x>300</x>
+     <y>310</y>
      <width>181</width>
      <height>21</height>
     </rect>
@@ -380,11 +217,29 @@
     <string>Сопротивление (КОм)</string>
    </property>
   </widget>
-  <widget class="QDoubleSpinBox" name="p4_value">
+  <widget class="QLabel" name="kp_l">
    <property name="geometry">
     <rect>
-     <x>240</x>
-     <y>210</y>
+     <x>650</x>
+     <y>150</y>
+     <width>100</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Узел k+</string>
+   </property>
+  </widget>
+  <widget class="QDoubleSpinBox" name="p2_value">
+   <property name="geometry">
+    <rect>
+     <x>520</x>
+     <y>270</y>
      <width>110</width>
      <height>25</height>
     </rect>
@@ -395,11 +250,11 @@
     </font>
    </property>
   </widget>
-  <widget class="QDoubleSpinBox" name="p1_value">
+  <widget class="QSpinBox" name="node_np">
    <property name="geometry">
     <rect>
-     <x>590</x>
-     <y>130</y>
+     <x>520</x>
+     <y>150</y>
      <width>110</width>
      <height>25</height>
     </rect>
@@ -408,13 +263,163 @@
     <font>
      <pointsize>12</pointsize>
     </font>
+   </property>
+   <property name="minimum">
+    <number>1</number>
+   </property>
+   <property name="maximum">
+    <number>100000</number>
+   </property>
+  </widget>
+  <widget class="QDoubleSpinBox" name="p0_value">
+   <property name="geometry">
+    <rect>
+     <x>520</x>
+     <y>230</y>
+     <width>110</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+  </widget>
+  <widget class="QSpinBox" name="node_km">
+   <property name="geometry">
+    <rect>
+     <x>870</x>
+     <y>190</y>
+     <width>110</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+   <property name="minimum">
+    <number>1</number>
+   </property>
+   <property name="maximum">
+    <number>100000</number>
+   </property>
+  </widget>
+  <widget class="QDoubleSpinBox" name="p4_value">
+   <property name="geometry">
+    <rect>
+     <x>520</x>
+     <y>310</y>
+     <width>110</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="change">
+   <property name="geometry">
+    <rect>
+     <x>310</x>
+     <y>360</y>
+     <width>161</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Внести изменения</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label2">
+   <property name="geometry">
+    <rect>
+     <x>70</x>
+     <y>20</y>
+     <width>171</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Список компонентов</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label1">
+   <property name="geometry">
+    <rect>
+     <x>300</x>
+     <y>50</y>
+     <width>151</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Номер элемента</string>
+   </property>
+  </widget>
+  <widget class="QSpinBox" name="elenent_number">
+   <property name="geometry">
+    <rect>
+     <x>470</x>
+     <y>50</y>
+     <width>71</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+   <property name="minimum">
+    <number>1</number>
+   </property>
+   <property name="maximum">
+    <number>100000</number>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="exit">
+   <property name="geometry">
+    <rect>
+     <x>520</x>
+     <y>360</y>
+     <width>211</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Возврат к основному окну</string>
+   </property>
+  </widget>
+  <widget class="QListWidget" name="component_list">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>60</y>
+     <width>256</width>
+     <height>321</height>
+    </rect>
    </property>
   </widget>
   <widget class="QDoubleSpinBox" name="p3_value">
    <property name="geometry">
     <rect>
-     <x>590</x>
-     <y>170</y>
+     <x>870</x>
+     <y>270</y>
      <width>110</width>
      <height>25</height>
     </rect>
@@ -428,8 +433,23 @@
   <widget class="QDoubleSpinBox" name="p5_value">
    <property name="geometry">
     <rect>
-     <x>590</x>
-     <y>210</y>
+     <x>870</x>
+     <y>310</y>
+     <width>110</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+  </widget>
+  <widget class="QDoubleSpinBox" name="p1_value">
+   <property name="geometry">
+    <rect>
+     <x>870</x>
+     <y>230</y>
      <width>110</width>
      <height>25</height>
     </rect>

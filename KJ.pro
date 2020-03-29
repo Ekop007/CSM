@@ -6,7 +6,7 @@
 
 QT       += core gui
 
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets webkitwidgets
 
 TARGET = KJ
 TEMPLATE = app
@@ -25,24 +25,43 @@ DEFINES += QT_DEPRECATED_WARNINGS
 CONFIG += c++14
 
 SOURCES += \
+    calculator.cpp \
         main.cpp \
         mainwindow.cpp \
     schemedialog.cpp \
     schemeparams.cpp \
     inputelements.cpp \
-    elemnts.cpp
+    matrix.cpp \
+    editionelements.cpp \
+    frequencyresponse.cpp \
+    calculationparams.cpp \
+    elemnetsparams.cpp \
+    nodedialog.cpp \
+    mybrouser.cpp
 
 HEADERS += \
+    calculator.h \
         mainwindow.h \
     schemedialog.h \
     schemeparams.h \
     inputelements.h \
-    elementsparams.h
+    elementsparams.h \
+    matrix.h \
+    editionelements.h \
+    frequencyresponse.h \
+    calculationparams.h \
+    nodedialog.h \
+    mybrouser.h \
+    complex.h
 
 FORMS += \
         mainwindow.ui \
     schemedialog.ui \
-    inputelements.ui
+    inputelements.ui \
+    editionelements.ui \
+    frequencyresponse.ui \
+    nodedialog.ui \
+    mybrouser.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

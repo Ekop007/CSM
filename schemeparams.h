@@ -2,6 +2,7 @@
 #define SCHEMEPARAMS_H
 
 #include <cstdint>
+#include <fstream>
 
 struct SchemeParams
 {
@@ -13,23 +14,26 @@ struct SchemeParams
     SchemeParams(SchemeParams &&sp) noexcept;
     void operator=(SchemeParams &sp);
     void operator=(SchemeParams sp);
-    void Swap(SchemeParams sp);
-
+    void swap(SchemeParams sp);
+    void allCount();
+    void write(std::ofstream &out);
+    void read(std::ifstream &in);
 
     std::size_t node_count;
     std::size_t resistors;
     std::size_t capasitors;
     std::size_t inductances;
-    std::size_t itun;
+    std::size_t itun; // источник (Т - тока, н - напряж), управляемый (Т Н)
     std::size_t inun;
     std::size_t itut;
     std::size_t inut;
     std::size_t b_p_transistors;
     std::size_t u_p_transistors;
-    std::size_t oper_ampfilers;
-    std::size_t transformers;
-    std::size_t p_o_ampfilers;
+    std::size_t oper_amplifiers;
+    std::size_t transformers; // 4 + коэф транс
+    std::size_t p_o_amplifiers;
     std::size_t perf_transistors;
+    std::size_t all_count;
 };
 
 #endif // SCHEMEPARAMS_H
