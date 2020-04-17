@@ -15,8 +15,8 @@ public:
 
     int flag_frequency_response;
     std::array<double, 3> frequency;
-    std::array<int, 2> in_nodes; // - +
-    std::array<int, 2> out_nodes; // - +
+    std::array<int, 2> in_nodes; // + -
+    std::array<int, 2> out_nodes; // + -
 };
 
 #endif // CALCULATIONPARAMS_H

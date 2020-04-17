@@ -29,6 +29,7 @@ struct ElementsParams
     void writeTransformer(std::ofstream &out);
     void writePOAmp(std::ofstream &out);
     void writePerfTrans(std::ofstream &out);
+    void WritePerfectTransformer(std::ofstream &out);
     void readR(std::ifstream &in);
     void readC(std::ifstream &in);
     void readL(std::ifstream &in);
@@ -42,7 +43,7 @@ struct ElementsParams
     void readTransformer(std::ifstream &in);
     void readPOAmp(std::ifstream &in);
     void readPerfTrans(std::ifstream &in);
-
+    void readPerfectTransformer(std::ifstream &in);
 
     /*std::vector<std::array<int, 2>> nodeR; // - +
     std::vector<std::array<int, 2>> nodeC; // - +
@@ -81,6 +82,7 @@ struct ElementsParams
     MatrixT<int> nodeUPTrans;
     MatrixT<int> nodeOperAmp;
     MatrixT<int> nodeTransformer;
+    MatrixT<int> nodePerfectTransformer;
     MatrixT<int> nodePOAmp;
     MatrixT<int> nodePerfTrans;
     MatrixT<double> valueR;
@@ -94,6 +96,7 @@ struct ElementsParams
     MatrixT<double> valueUPTrans;
     MatrixT<double> valueOperAmp;
     MatrixT<double> valueTranformer;
+    MatrixT<double> valuePerfectTransformer;
     MatrixT<double> valuePOAmp;
     MatrixT<double> valuePerfTrans;
     size_t maxnodes;

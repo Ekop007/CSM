@@ -82,7 +82,7 @@
     </font>
    </property>
    <property name="minimum">
-    <number>1</number>
+    <number>0</number>
    </property>
    <property name="maximum">
     <number>100000</number>
@@ -157,7 +157,7 @@
     </font>
    </property>
    <property name="minimum">
-    <number>1</number>
+    <number>0</number>
    </property>
    <property name="maximum">
     <number>100000</number>
@@ -265,7 +265,7 @@
     </font>
    </property>
    <property name="minimum">
-    <number>1</number>
+    <number>0</number>
    </property>
    <property name="maximum">
     <number>100000</number>
@@ -301,7 +301,7 @@
     </font>
    </property>
    <property name="minimum">
-    <number>1</number>
+    <number>0</number>
    </property>
    <property name="maximum">
     <number>100000</number>

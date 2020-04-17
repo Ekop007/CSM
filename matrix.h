@@ -63,13 +63,14 @@ public:
     }
 
 
-    void setAllValue(T value)
+    void setAllValue(const T &value)
     {
         for (auto row_it = matrix.begin(); row_it != matrix.end(); ++row_it)
         {
             for (auto col_it = row_it->begin(); col_it != row_it->end(); ++col_it)
             {
-                (*col_it) = value;
+                T moveble(value);
+                (*col_it) = std::move(moveble);
             }
         }
     }

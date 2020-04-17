@@ -4,7 +4,7 @@
 
 EditionElements::EditionElements(QWidget *parent) :
     QDialog(parent),
-    ui(new Ui::EditionElements), element_number(13), element_id(13), max_id(12), f(0)
+    ui(new Ui::EditionElements), element_number(14), element_id(14), max_id(13), f(0)
 {
     ui->setupUi(this);
     titles[0] = &EditionElements::resistorTittle;
@@ -19,7 +19,8 @@ EditionElements::EditionElements(QWidget *parent) :
     titles[9] = &EditionElements::OperAmplifierTitle;
     titles[10] = &EditionElements::TransformerTitle;
     titles[11] = &EditionElements::POAmplifierTitle;
-    titles[12] = &EditionElements::PerfTransistorTitle;
+    titles[12] = &EditionElements::PerfectTransformerTitle;
+    titles[13] = &EditionElements::PerfTransistorTitle;
 
     read_par[0] = &EditionElements::readResistorPar;
     read_par[1] = &EditionElements::readCaparisonPar;
@@ -33,7 +34,8 @@ EditionElements::EditionElements(QWidget *parent) :
     read_par[9] = &EditionElements::readOperAmplifierPar;
     read_par[10] = &EditionElements::readTransformerPar;
     read_par[11] = &EditionElements::readPOAmplifierPar;
-    read_par[12] = &EditionElements::readPerfTransistorPar;
+    read_par[12] = &EditionElements::readPerfectTransformerPar;
+    read_par[13] = &EditionElements::readPerfTransistorPar;
 
     save_par[0] = &EditionElements::saveResistorPar;
     save_par[1] = &EditionElements::saveCaparisonPar;
@@ -47,7 +49,8 @@ EditionElements::EditionElements(QWidget *parent) :
     save_par[9] = &EditionElements::saveOperAmplifierPar;
     save_par[10] = &EditionElements::saveTransformerPar;
     save_par[11] = &EditionElements::savePOAmplifierPar;
-    save_par[12] = &EditionElements::savePerfTransistorPar;
+    save_par[12] = &EditionElements::savePerfectTransformerPar;
+    save_par[13] = &EditionElements::savePerfTransistorPar;
 
 }
 
@@ -150,6 +153,24 @@ void EditionElements::initPar()
         ui->node_km->show();
         ui->node_km->show();
         break;
+    case 5: // Perfect Transformator
+        ui->p0->show();
+        ui->p0_value->show();
+        ui->p1->hide();
+        ui->p2->hide();
+        ui->p3->hide();
+        ui->p4->hide();
+        ui->p5->hide();
+        ui->p1_value->hide();
+        ui->p2_value->hide();
+        ui->p3_value->hide();
+        ui->p4_value->hide();
+        ui->p5_value->hide();
+        ui->km_l->show();
+        ui->kp_l->show();
+        ui->node_km->show();
+        ui->node_km->show();
+        break;
     }
 }
 
@@ -207,7 +228,11 @@ void EditionElements::initListPar()
     {
         ui->component_list->addItem(QString("PO Amplifier"));
     }
-   /* if(elements_params_ptr->nodePerfTrans.getR() > 0)
+    if(elements_params_ptr->nodePerfectTransformer.getR() > 1)
+    {
+        ui->component_list->addItem(QString("Perfect Transformer"));
+    }
+    /* if(elements_params_ptr->nodePerfTrans.getR() > 0)
     {
         ui->component_list->addItem(QString("Perf Transistor"));
     }*/
@@ -369,6 +394,29 @@ void EditionElements::PerfTransistorTitle()
     ui->elenent_number->setMinimum(1);
 }
 
+void EditionElements::PerfectTransformerTitle()
+{
+    ui->p0->show();
+    ui->p1->hide();
+    ui->p2->hide();
+    ui->p3->hide();
+    ui->p4->hide();
+    ui->p5->hide();
+    ui->p0_value->show();
+    ui->p1_value->hide();
+    ui->p2_value->hide();
+    ui->p3_value->hide();
+    ui->p4_value->hide();
+    ui->p5_value->hide();
+    ui->p0->setText(QString("Коэффициент преобразования"));
+    ui->nm_l->setText(QString("n-"));
+    ui->np_l->setText(QString("n+"));
+    ui->km_l->setText(QString("k-"));
+    ui->kp_l->setText(QString("k+"));
+    ui->elenent_number->setMaximum(static_cast<int>(elements_params_ptr->nodePerfectTransformer.getR()));
+    ui->elenent_number->setMinimum(1);
+}
+
 void EditionElements::readResistorPar()
 {
     ui->p0_value->setValue(elements_params_ptr->valueR[element_number][0]);
@@ -457,10 +505,10 @@ void EditionElements::readOperAmplifierPar()
     ui->p1_value->setValue(elements_params_ptr->valueOperAmp[element_number][1]);
     ui->p2_value->setValue(elements_params_ptr->valueOperAmp[element_number][2]);
     ui->p3_value->setValue(elements_params_ptr->valueOperAmp[element_number][3]);
-    ui->node_nm->setValue(elements_params_ptr->nodeOperAmp[element_number][0]);
-    ui->node_np->setValue(elements_params_ptr->nodeOperAmp[element_number][1]);
-    ui->node_km->setValue(elements_params_ptr->nodeOperAmp[element_number][2]);
-    ui->node_kp->setValue(elements_params_ptr->nodeOperAmp[element_number][3]);
+    ui->node_nm->setValue(elements_params_ptr->nodeOperAmp[element_number][1]);
+    ui->node_np->setValue(elements_params_ptr->nodeOperAmp[element_number][0]);
+    ui->node_km->setValue(elements_params_ptr->nodeOperAmp[element_number][3]);
+    ui->node_kp->setValue(elements_params_ptr->nodeOperAmp[element_number][2]);
 }
 
 void EditionElements::readTransformerPar()
@@ -469,10 +517,10 @@ void EditionElements::readTransformerPar()
     ui->p1_value->setValue(elements_params_ptr->valueTranformer[element_number][1]);
     ui->p2_value->setValue(elements_params_ptr->valueTranformer[element_number][2]);
     ui->p3_value->setValue(elements_params_ptr->valueTranformer[element_number][3]);
-    ui->node_nm->setValue(elements_params_ptr->nodeTransformer[element_number][0]);
-    ui->node_np->setValue(elements_params_ptr->nodeTransformer[element_number][1]);
-    ui->node_km->setValue(elements_params_ptr->nodeTransformer[element_number][2]);
-    ui->node_kp->setValue(elements_params_ptr->nodeTransformer[element_number][3]);
+    ui->node_nm->setValue(elements_params_ptr->nodeTransformer[element_number][1]);
+    ui->node_np->setValue(elements_params_ptr->nodeTransformer[element_number][0]);
+    ui->node_km->setValue(elements_params_ptr->nodeTransformer[element_number][3]);
+    ui->node_kp->setValue(elements_params_ptr->nodeTransformer[element_number][2]);
 }
 
 void EditionElements::readPOAmplifierPar()
@@ -493,6 +541,15 @@ void EditionElements::readPerfTransistorPar()
     ui->node_np->setValue(elements_params_ptr->nodePerfTrans[element_number][0]);
     ui->node_nm->setValue(elements_params_ptr->nodePerfTrans[element_number][1]);
     ui->node_km->setValue(elements_params_ptr->nodePerfTrans[element_number][2]);
+}
+
+void EditionElements::readPerfectTransformerPar()
+{
+    ui->p0_value->setValue(elements_params_ptr->valuePerfectTransformer[element_number][0]);
+    ui->node_np->setValue(elements_params_ptr->nodePerfectTransformer[element_number][0]);
+    ui->node_nm->setValue(elements_params_ptr->nodePerfectTransformer[element_number][1]);
+    ui->node_kp->setValue(elements_params_ptr->nodePerfectTransformer[element_number][2]);
+    ui->node_km->setValue(elements_params_ptr->nodePerfectTransformer[element_number][3]);
 }
 
 void EditionElements::saveResistorPar()
@@ -621,6 +678,15 @@ void EditionElements::savePerfTransistorPar()
     elements_params_ptr->nodePerfTrans[element_number][2] = ui->node_km->value();
 }
 
+void EditionElements::savePerfectTransformerPar()
+{
+    elements_params_ptr->valuePerfectTransformer[element_number][0] = ui->p0_value->value();
+    elements_params_ptr->nodePerfectTransformer[element_number][0] = ui->node_np->value();
+    elements_params_ptr->nodePerfectTransformer[element_number][1] = ui->node_nm->value();
+    elements_params_ptr->nodePerfectTransformer[element_number][2] = ui->node_kp->value();
+    elements_params_ptr->nodePerfectTransformer[element_number][3] = ui->node_km->value();
+}
+
 void EditionElements::initPointer(std::shared_ptr<ElementsParams> &shptr)
 {
     elements_params_ptr = shptr;
@@ -629,7 +695,7 @@ void EditionElements::initPointer(std::shared_ptr<ElementsParams> &shptr)
 
 void EditionElements::on_component_list_itemClicked(QListWidgetItem *item)
 {
-    static std::vector<QString> vec = {"R", "C", "L", "ITUN", "INUN", "ITUT", "INUT", "BP Transistor", "UP Transistor", "Op Amplifier", "Transformer", "PO Amplifier"};
+    static std::vector<QString> vec = {"R", "C", "L", "ITUN", "INUN", "ITUT", "INUT", "BP Transistor", "UP Transistor", "Op Amplifier", "Transformer", "Perfect Transformer", "PO Amplifier"};
     if (item->text() == vec[0])
     {
         f = 0;
@@ -690,6 +756,11 @@ void EditionElements::on_component_list_itemClicked(QListWidgetItem *item)
         f = 4;
         element_id = 11;
     }
+    else if (item->text() == vec[12])
+    {
+        f = 5;
+        element_id = 12;
+    }
     element_number = 1;
     ui->elenent_number->setValue(static_cast<int>(element_number));
     (this->*titles[element_id])();
@@ -712,6 +783,6 @@ void EditionElements::on_change_clicked()
 
 void EditionElements::on_elenent_number_valueChanged(int arg1)
 {
-    element_number = static_cast<size_t>(arg1 - 1);
+    element_number = static_cast<size_t>(arg1);
     (this->*read_par[element_id])();
 }

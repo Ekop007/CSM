@@ -35,6 +35,7 @@ void SchemeDialog::on_OK_clicked()
     scheme_params_ptr->transformers = static_cast<size_t>(ui->transformers->value());
     scheme_params_ptr->p_o_amplifiers = static_cast<size_t>(ui->p_o_alplifiers->value());
     scheme_params_ptr->perf_transistors = static_cast<size_t>(ui->perf_tranformers->value());
+    scheme_params_ptr->perfect_transformer = static_cast<size_t>(ui->perf_tranformers->value());
     this->hide();
     emit nextInputWindow();
 }

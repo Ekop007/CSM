@@ -46,6 +46,7 @@ private:
     void TransformerTitle();
     void POAmplifierTitle();
     void PerfTransistorTitle();
+    void PerfectTransformerTitle();
 
     // read parameters
     void resistorPar();
@@ -61,6 +62,7 @@ private:
     void TransformerPar();
     void POAmplifierPar();
     void PerfTransistorPar();
+    void PerfectTransformerPar();
 
 private slots:
     void on_next_element_clicked();

@@ -17,16 +17,16 @@ void ElementsParams::Init(size_t rc, size_t cc, size_t lc, size_t itunc, size_t 
     valueL.resize(lc + 1, 1);
     nodeL.resize(lc + 1, 2);
 
-    valueITUN.resize(itunc + 1, 1);
+    valueITUN.resize(itunc + 1, 3);
     nodeITUN.resize(itunc + 1, 4);
 
-    valueITUT.resize(itutc + 1, 1);
+    valueITUT.resize(itutc + 1, 3);
     nodeITUT.resize(itutc + 1, 4);
 
-    valueINUN.resize(inunc + 1, 1);
+    valueINUN.resize(inunc + 1, 3);
     nodeINUN.resize(inunc + 1, 4);
 
-    valueINUT.resize(inutc + 1, 1);
+    valueINUT.resize(inutc + 1, 3);
     nodeINUT.resize(inutc + 1, 4);
 
     valueBPTrans.resize(bptrc + 1, 6);
@@ -81,7 +81,8 @@ void ElementsParams::writeITUN(std::ofstream &out)
     for (size_t i = 1; i < valueITUN.getR(); ++i)
     {
         out << nodeITUN[i][0] << " " << nodeITUN[i][1] << " "
-            << nodeITUN[i][2] << " " << nodeITUN[i][3] << " " << valueITUN[i][0] << std::endl;
+            << nodeITUN[i][2] << " " << nodeITUN[i][3] << " " << valueITUN[i][0]
+            << " " << valueITUN[i][1] << " " << valueITUN[i][2] << std::endl;
     }
 }
 
@@ -91,7 +92,8 @@ void ElementsParams::writeINUN(std::ofstream &out)
     for (size_t i = 1; i < valueINUN.getR(); ++i)
     {
         out << nodeINUN[i][0] << " " << nodeINUN[i][1] << " "
-            << nodeINUN[i][2] << " " << nodeINUN[i][3] << " " << valueINUN[i][0] << std::endl;
+            << nodeINUN[i][2] << " " << nodeINUN[i][3] << " " << valueINUN[i][0]
+            << " " << valueINUN[i][1] << " " << valueINUN[i][2] << std::endl;
     }
 }
 
@@ -101,7 +103,8 @@ void ElementsParams::writeITUT(std::ofstream &out)
     for (size_t i = 1; i < valueITUN.getR(); ++i)
     {
         out << nodeITUT[i][0] << " " << nodeITUT[i][1] << " "
-            << nodeITUT[i][2] << " " << nodeITUT[i][3] << " " << valueITUT[i][0] << std::endl;
+            << nodeITUT[i][2] << " " << nodeITUT[i][3] << " " << valueITUT[i][0]
+            << " " << valueITUT[i][1] << " " << valueITUT[i][2] << std::endl;
     }
 }
 
@@ -111,7 +114,8 @@ void ElementsParams::writeINUT(std::ofstream &out)
     for (size_t i = 1; i < valueITUN.getR(); ++i)
     {
         out << nodeINUT[i][0] << " " << nodeINUT[i][1] << " "
-            << nodeINUT[i][2] << " " << nodeINUT[i][3] << " " << valueINUT[i][0] << std::endl;
+            << nodeINUT[i][2] << " " << nodeINUT[i][3] << " " << valueINUT[i][0]
+            << " " << valueINUT[i][1] << " " << valueINUT[i][2] << std::endl;
     }
 }
 
@@ -169,8 +173,18 @@ void ElementsParams::writePerfTrans(std::ofstream &out)
     out << valuePerfTrans.getR() <<std::endl;
     for (size_t i = 1; i < valuePerfTrans.getR(); ++i)
     {
-        out << nodePerfTrans[i][0] << " " << nodePerfTrans[i][1] << " " << nodePerfTrans[i][2] << " " << nodePerfTrans[i][0] << " " << valuePerfTrans[i][1]
+        out << nodePerfTrans[i][0] << " " << nodePerfTrans[i][1] << " " << nodePerfTrans[i][2] << " " << valuePerfTrans[i][0] << " " << valuePerfTrans[i][1]
             << " " << valuePerfTrans[i][2] << " " << valuePerfTrans[i][3] << " " << valuePerfTrans[i][4] << std::endl;
+    }
+}
+
+void ElementsParams::WritePerfectTransformer(std::ofstream &out)
+{
+    out << valuePerfectTransformer.getR() <<std::endl;
+    for (size_t i = 1; i < valuePerfectTransformer.getR(); ++i)
+    {
+        out << nodePerfectTransformer[i][0] << " " << nodePerfectTransformer[i][1] << " " << nodePerfectTransformer[i][2] << " " << nodePerfectTransformer[i][3]
+            << " " << valuePerfectTransformer[i][0] << std::endl;
     }
 }
 
@@ -229,7 +243,7 @@ void ElementsParams::readITUN(std::ifstream &in)
         nodeITUN.resize(size, 4);
         for (size_t i = 1; i < size; ++i)
         {
-            in >> nodeITUN[i][0] >> nodeITUN[i][1] >> nodeITUN[i][2] >> nodeITUN[i][3] >> valueITUN[i][0];
+            in >> nodeITUN[i][0] >> nodeITUN[i][1] >> nodeITUN[i][2] >> nodeITUN[i][3] >> valueITUN[i][0] >> valueITUN[i][1] >> valueITUN[i][2];
         }
     }
 }
@@ -244,7 +258,7 @@ void ElementsParams::readINUN(std::ifstream &in)
         nodeINUN.resize(size, 4);
         for (size_t i = 1; i < size; ++i)
         {
-            in >> nodeINUN[i][0] >> nodeINUN[i][1] >> nodeINUN[i][2] >> nodeINUN[i][3] >> valueINUN[i][0];
+            in >> nodeINUN[i][0] >> nodeINUN[i][1] >> nodeINUN[i][2] >> nodeINUN[i][3] >> valueINUN[i][0] >> valueINUN[i][1] >> valueINUN[i][2];
         }
     }
 }
@@ -259,7 +273,7 @@ void ElementsParams::readITUT(std::ifstream &in)
         nodeITUT.resize(size, 4);
         for (size_t i = 1; i < size; ++i)
         {
-            in >> nodeITUT[i][0] >> nodeITUT[i][1] >> nodeITUT[i][2] >> nodeITUT[i][3] >> valueITUT[i][0];
+            in >> nodeITUT[i][0] >> nodeITUT[i][1] >> nodeITUT[i][2] >> nodeITUT[i][3] >> valueITUT[i][0] >> valueITUT[i][1] >> valueITUT[i][2];
         }
     }
 }
@@ -274,7 +288,7 @@ void ElementsParams::readINUT(std::ifstream &in)
         nodeINUT.resize(size, 4);
         for (size_t i = 1; i < size; ++i)
         {
-            in >> nodeINUT[i][0] >> nodeINUT[i][1] >> nodeINUT[i][2] >> nodeINUT[i][3] >> valueINUT[i][0];
+            in >> nodeINUT[i][0] >> nodeINUT[i][1] >> nodeINUT[i][2] >> nodeINUT[i][3] >> valueINUT[i][0] >> valueINUT[i][1] >> valueINUT[i][2];
         }
     }
 }
@@ -371,6 +385,22 @@ void ElementsParams::readPerfTrans(std::ifstream &in)
         {
             in >> nodePerfTrans[i][0] >> nodePerfTrans[i][1] >> nodePerfTrans[i][2] >> valuePerfTrans[i][0]
                     >> valuePerfTrans[i][1] >> valuePerfTrans[i][2] >> valuePerfTrans[i][3] >> valuePerfTrans[i][4];
+        }
+    }
+}
+
+void ElementsParams::readPerfectTransformer(std::ifstream &in)
+{
+    size_t size;
+    in >> size;
+    if (size > 0)
+    {
+        nodePerfectTransformer.resize(size, 4);
+        valuePerfectTransformer.resize(size, 1);
+        for (size_t i = 1; i < size; ++i)
+        {
+            in >> nodePerfectTransformer[i][0] >> nodePerfectTransformer[i][1] >> nodePerfectTransformer[i][2] >> nodePerfectTransformer[i][2]
+                    >> valuePerfectTransformer[i][0];
         }
     }
 }

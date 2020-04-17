@@ -29,10 +29,10 @@ void NodeDialog::setMaxNode(int max)
 
 void NodeDialog::on_pushButton_clicked()
 {
-    calculation_params_ptr->in_nodes[0] = ui->node_nm->value();
-    calculation_params_ptr->in_nodes[1] = ui->node_np->value();
-    calculation_params_ptr->out_nodes[0] = ui->node_km->value();
-    calculation_params_ptr->out_nodes[1] = ui->node_kp->value();
+    calculation_params_ptr->in_nodes[0] = ui->node_np->value();
+    calculation_params_ptr->in_nodes[1] = ui->node_nm->value();
+    calculation_params_ptr->out_nodes[0] = ui->node_kp->value();
+    calculation_params_ptr->out_nodes[1] = ui->node_km->value();
     this->hide();
     emit showMainWindow();
 }

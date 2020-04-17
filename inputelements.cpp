@@ -3,8 +3,8 @@
 
 InputElements::InputElements(QWidget *parent) :
     QDialog(parent), elem({0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}),
-    ui(new Ui::InputElements), element_number(0), element_id(0),
-    max_id(12), width1(380), width2(720), f(0)
+    ui(new Ui::InputElements), element_number(1), element_id(0),
+    max_id(13), width1(380), width2(720), f(0)
 {
     ui->setupUi(this);
     ui->p1->hide();
@@ -26,7 +26,7 @@ InputElements::InputElements(QWidget *parent) :
     titles[9] = &InputElements::OperAmplifierTitle;
     titles[10] = &InputElements::TransformerTitle;
     titles[11] = &InputElements::POAmplifierTitle;
-    titles[12] = &InputElements::PerfTransistorTitle;
+    titles[12] = &InputElements::PerfectTransformerTitle;
 
     read_par[0] = &InputElements::resistorPar;
     read_par[1] = &InputElements::caparisonPar;
@@ -40,7 +40,7 @@ InputElements::InputElements(QWidget *parent) :
     read_par[9] = &InputElements::OperAmplifierPar;
     read_par[10] = &InputElements::TransformerPar;
     read_par[11] = &InputElements::POAmplifierPar;
-    read_par[12] = &InputElements::PerfTransistorPar;
+    read_par[12] = &InputElements::PerfectTransformerPar;
 
     this->move(300, 200);
     resetValue();
@@ -344,6 +344,18 @@ void InputElements::check()
             }
             break;
 
+            case 12:
+            if (elements_params_ptr->nodePerfectTransformer.getR() == 1)
+            {
+                element_id +=1;
+            }
+            else
+            {
+                (this->*titles[element_id])();
+                return;
+            }
+            break;
+
             default:
             element_id +=1;
             break;
@@ -353,9 +365,11 @@ void InputElements::check()
 
 void InputElements::resetValue()
 {
-    str << (element_number + 1);
-    ui->node_nm->setValue(1);
-    ui->node_np->setValue(1);
+    str << element_number;
+    ui->node_nm->setValue(0);
+    ui->node_np->setValue(0);
+    ui->node_km->setValue(0);
+    ui->node_kp->setValue(0);
     ui->p0_value->setValue(0);
     ui->p1_value->setValue(0);
     ui->p2_value->setValue(0);
@@ -482,7 +496,30 @@ void InputElements::resetSize()
         ui->km_l->show();
         ui->kp_l->show();
         ui->node_km->show();
+        ui->node_kp->show();
+        ui->next_element->move(300, 250);
+        break;
+    case 5: // transformer || amplifier
+        if (this->width() != width2)
+        {
+            this->resize(width2, this->height());
+        }
+        ui->p0->show();
+        ui->p0_value->show();
+        ui->p1->hide();
+        ui->p2->hide();
+        ui->p3->hide();
+        ui->p4->hide();
+        ui->p5->hide();
+        ui->p1_value->hide();
+        ui->p2_value->hide();
+        ui->p3_value->hide();
+        ui->p4_value->hide();
+        ui->p5_value->hide();
+        ui->km_l->show();
+        ui->kp_l->show();
         ui->node_km->show();
+        ui->node_kp->show();
         ui->next_element->move(300, 250);
         break;
     }
@@ -522,6 +559,8 @@ void InputElements::ITUNTitle()
     this->setWindowTitle(QString("ITUN"));
     ui->name_element->setText(QString("ITUN"));
     ui->p0->setText(QString("Коэффициент преобразования"));
+    ui->p1->setText(QString("Константа времени T1"));
+    ui->p2->setText(QString("Константа времени T2"));
     // 340 - ширина
 }
 
@@ -532,6 +571,8 @@ void InputElements::INUNTitle()
     this->setWindowTitle(QString("INUN"));
     ui->name_element->setText(QString("INUN"));
     ui->p0->setText(QString("Коэффициент преобразования"));
+    ui->p1->setText(QString("Константа времени T1"));
+    ui->p2->setText(QString("Константа времени T2"));
 }
 
 void InputElements::ITUTTitle()
@@ -541,6 +582,8 @@ void InputElements::ITUTTitle()
     this->setWindowTitle(QString("ITUT"));
     ui->name_element->setText(QString("ITUT"));
     ui->p0->setText(QString("Коэффициент преобразования"));
+    ui->p1->setText(QString("Константа времени T1"));
+    ui->p2->setText(QString("Константа времени T2"));
     // 720 - ширина
 }
 
@@ -551,6 +594,8 @@ void InputElements::INUTTitle()
     this->setWindowTitle(QString("INUT"));
     ui->name_element->setText(QString("INUT"));
     ui->p0->setText(QString("Коэффициент преобразования"));
+    ui->p1->setText(QString("Константа времени T1"));
+    ui->p2->setText(QString("Константа времени T2"));
 }
 
 void InputElements::BPTransistorTitle()
@@ -642,18 +687,56 @@ void InputElements::POAmplifierTitle()
 
 void InputElements::PerfTransistorTitle()
 {
-    f = 3;
+    f = 1;
     resetSize();
-    this->setWindowTitle(QString("Идеальный транзистор"));
-    ui->name_element->setText(QString("Идеальный транзистор"));
-    ui->nm_l->setText(QString("Коллектор"));
-    ui->np_l->setText(QString("База"));
-    ui->km_l->setText(QString("Эмитор"));
+    ui->p0->show();
+    ui->p1->hide();
+    ui->p2->hide();
+    ui->p3->hide();
+    ui->p4->hide();
+    ui->p5->hide();
+    ui->p0_value->show();
+    ui->p1_value->hide();
+    ui->p2_value->hide();
+    ui->p3_value->hide();
+    ui->p4_value->hide();
+    ui->p5_value->hide();
+    this->setWindowTitle(QString("Идеальный трансформатор"));
+    ui->name_element->setText(QString("Идеальный трансформатор"));
+    ui->nm_l->setText(QString("n-"));
+    ui->np_l->setText(QString("n+"));
+    ui->km_l->setText(QString("k-"));
+    ui->kp_l->setText(QString("k+"));
     ui->p0->setText(QString("Коэффициент преобразования"));
     ui->p1->setText(QString("Коэффициент преобразования"));
     ui->p2->setText(QString("Коэффициент преобразования"));
     ui->p3->setText(QString("Коэффициент преобразования"));
     ui->p4->setText(QString("Коэффициент преобразования"));
+}
+
+void InputElements::PerfectTransformerTitle()
+{
+    f = 1;
+    resetSize();
+    ui->p0->show();
+    ui->p1->hide();
+    ui->p2->hide();
+    ui->p3->hide();
+    ui->p4->hide();
+    ui->p5->hide();
+    ui->p0_value->show();
+    ui->p1_value->hide();
+    ui->p2_value->hide();
+    ui->p3_value->hide();
+    ui->p4_value->hide();
+    ui->p5_value->hide();
+    this->setWindowTitle(QString("Идеальный транзистор"));
+    ui->name_element->setText(QString("Идеальный транзистор"));
+    ui->nm_l->setText(QString("n-"));
+    ui->np_l->setText(QString("n+"));
+    ui->kp_l->setText(QString("k+"));
+    ui->km_l->setText(QString("k-"));
+    ui->p0->setText(QString("Коэффициент преобразования"));
 }
 
 void InputElements::resistorPar()
@@ -680,6 +763,8 @@ void InputElements::inductancesPar()
 void InputElements::ITUNPar()
 {
     elements_params_ptr->valueITUN[element_number][0] = ui->p0_value->value();
+    elements_params_ptr->valueITUN[element_number][1] = ui->p1_value->value();
+    elements_params_ptr->valueITUN[element_number][2] = ui->p2_value->value();
     elements_params_ptr->nodeITUN[element_number][1] = ui->node_nm->value();
     elements_params_ptr->nodeITUN[element_number][0] = ui->node_np->value();
     elements_params_ptr->nodeITUN[element_number][3] = ui->node_km->value();
@@ -689,6 +774,8 @@ void InputElements::ITUNPar()
 void InputElements::INUNPar()
 {
     elements_params_ptr->valueINUN[element_number][0] = ui->p0_value->value();
+    elements_params_ptr->valueINUN[element_number][1] = ui->p1_value->value();
+    elements_params_ptr->valueINUN[element_number][2] = ui->p2_value->value();
     elements_params_ptr->nodeINUN[element_number][1] = ui->node_nm->value();
     elements_params_ptr->nodeINUN[element_number][0] = ui->node_np->value();
     elements_params_ptr->nodeINUN[element_number][3] = ui->node_km->value();
@@ -698,6 +785,8 @@ void InputElements::INUNPar()
 void InputElements::ITUTPar()
 {
     elements_params_ptr->valueITUT[element_number][0] = ui->p0_value->value();
+    elements_params_ptr->valueITUT[element_number][1] = ui->p1_value->value();
+    elements_params_ptr->valueITUT[element_number][2] = ui->p2_value->value();
     elements_params_ptr->nodeITUT[element_number][1] = ui->node_nm->value();
     elements_params_ptr->nodeITUT[element_number][0] = ui->node_np->value();
     elements_params_ptr->nodeITUT[element_number][3] = ui->node_km->value();
@@ -707,6 +796,8 @@ void InputElements::ITUTPar()
 void InputElements::INUTPar()
 {
     elements_params_ptr->valueINUT[element_number][0] = ui->p0_value->value();
+    elements_params_ptr->valueINUT[element_number][1] = ui->p1_value->value();
+    elements_params_ptr->valueINUT[element_number][2] = ui->p2_value->value();
     elements_params_ptr->nodeINUT[element_number][1] = ui->node_nm->value();
     elements_params_ptr->nodeINUT[element_number][0] = ui->node_np->value();
     elements_params_ptr->nodeINUT[element_number][3] = ui->node_km->value();
@@ -776,14 +867,14 @@ void InputElements::POAmplifierPar()
 
 void InputElements::PerfTransistorPar()
 {
-    elements_params_ptr->valuePerfTrans[element_number][0] = ui->p0_value->value();
-    elements_params_ptr->valuePerfTrans[element_number][1] = ui->p1_value->value();
-    elements_params_ptr->valuePerfTrans[element_number][2] = ui->p2_value->value();
-    elements_params_ptr->valuePerfTrans[element_number][3] = ui->p3_value->value();
-    elements_params_ptr->valuePerfTrans[element_number][4] = ui->p4_value->value();
-    elements_params_ptr->nodePerfTrans[element_number][0] = ui->node_np->value();
-    elements_params_ptr->nodePerfTrans[element_number][1] = ui->node_nm->value();
-    elements_params_ptr->nodePerfTrans[element_number][2] = ui->node_km->value();
+    elements_params_ptr->valuePerfectTransformer[element_number][0] = ui->p0_value->value();
+    elements_params_ptr->valuePerfectTransformer[element_number][1] = ui->p1_value->value();
+    elements_params_ptr->valuePerfectTransformer[element_number][2] = ui->p2_value->value();
+    elements_params_ptr->valuePerfectTransformer[element_number][3] = ui->p3_value->value();
+    elements_params_ptr->valuePerfectTransformer[element_number][4] = ui->p4_value->value();
+    elements_params_ptr->nodePerfectTransformer[element_number][0] = ui->node_np->value();
+    elements_params_ptr->nodePerfectTransformer[element_number][1] = ui->node_nm->value();
+    elements_params_ptr->nodePerfectTransformer[element_number][2] = ui->node_km->value();
 }
 
 
@@ -792,7 +883,7 @@ void InputElements::on_next_element_clicked()
     this->hide();
     /* Здесь считывается информация  в массив */
     (this->*read_par[element_id])();
-    if (element_number + 1 < elem[element_id])
+    if (element_number < elem[element_id])
     {
         ++element_number;
         resetValue();
@@ -800,12 +891,12 @@ void InputElements::on_next_element_clicked()
     }
     else
     {
-        element_number = 0;
+        element_number = 1;
         ++element_id;
         check();
         if (element_id >= max_id)
         {
-            element_id = 0;
+            element_id = 1;
             element_number = 0;
             emit showMainWindow();
         }

@@ -42,6 +42,15 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ionodes.get(), SIGNAL(showMainWindow()), this, SLOT(showThis()));
     connect(brouser.get(), SIGNAL(showMainWindow()), this, SLOT(showThis()));
     showParams();
+    ui->result_table->setColumnCount(7);
+    ui->result_table->setRowCount(1);
+    ui->result_table->setItem(0, 0, new QTableWidgetItem("f, кГц"));
+    ui->result_table->setItem(0, 1, new QTableWidgetItem("kum"));
+    ui->result_table->setItem(0, 2, new QTableWidgetItem("kua"));
+    ui->result_table->setItem(0, 3, new QTableWidgetItem("rim"));
+    ui->result_table->setItem(0, 4, new QTableWidgetItem("ria"));
+    ui->result_table->setItem(0, 5, new QTableWidgetItem("rom"));
+    ui->result_table->setItem(0, 6, new QTableWidgetItem("roa"));
 }
 
 MainWindow::~MainWindow()
@@ -210,9 +219,9 @@ void MainWindow::on_ID_INTERNET_triggered()
 void MainWindow::on_ID_CALC_triggered()
 {
     calculator->setSizeW();
-    calculator->form_D();
+    calculator->run();
     ui->Logger->clear();
-    auto W = calculator->getW();
+    auto &W = calculator->getW();
     std::stringstream str;
     for (size_t i = 0; i < W.getR(); ++i)
     {
@@ -223,4 +232,23 @@ void MainWindow::on_ID_CALC_triggered()
         str << std::endl;
     }
     ui->Logger->setText(QString(str.str().c_str()));
+    auto &kum = calculator->getKUM();
+    auto &kua = calculator->getKUM();
+    auto &rom = calculator->getKUM();
+    auto &roa = calculator->getKUM();
+    auto &rim = calculator->getKUM();
+    auto &ria = calculator->getKUM();
+    auto &f = calculator->getF();
+    ui->result_table->setRowCount(1);
+    ui->result_table->setRowCount(1 + kum.size());
+    for (size_t i = 0; i < kum.size(); ++i)
+    {
+        ui->result_table->setItem(i + 1, 0, new QTableWidgetItem(std::to_string(f[i]).c_str()));
+        ui->result_table->setItem(i + 1, 1, new QTableWidgetItem(std::to_string(kum[i]).c_str()));
+        ui->result_table->setItem(i + 1, 2, new QTableWidgetItem(std::to_string(kua[i]).c_str()));
+        ui->result_table->setItem(i + 1, 3, new QTableWidgetItem(std::to_string(rim[i]).c_str()));
+        ui->result_table->setItem(i + 1, 4, new QTableWidgetItem(std::to_string(ria[i]).c_str()));
+        ui->result_table->setItem(i + 1, 5, new QTableWidgetItem(std::to_string(rom[i]).c_str()));
+        ui->result_table->setItem(i + 1, 6, new QTableWidgetItem(std::to_string(roa[i]).c_str()));
+    }
 }
