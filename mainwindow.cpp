@@ -83,7 +83,7 @@ void MainWindow::continueInput()
 {
     elements_params_ptr->Init(scheme_params_ptr->resistors, scheme_params_ptr->capasitors, scheme_params_ptr->inductances, scheme_params_ptr->itun, scheme_params_ptr->inun, scheme_params_ptr->itut,
                     scheme_params_ptr->inut, scheme_params_ptr->b_p_transistors, scheme_params_ptr->u_p_transistors, scheme_params_ptr->oper_amplifiers, scheme_params_ptr->transformers,
-                    scheme_params_ptr->p_o_amplifiers, scheme_params_ptr->perf_transistors);
+                    scheme_params_ptr->p_o_amplifiers, scheme_params_ptr->perfect_transformer);
     setValues();
     elements->init();
     elements->show();
@@ -123,7 +123,7 @@ void MainWindow::setValues()
     elements->elem[9] =  scheme_params_ptr->oper_amplifiers;
     elements->elem[10] = scheme_params_ptr->transformers;
     elements->elem[11] = scheme_params_ptr->p_o_amplifiers;
-    elements->elem[12] = scheme_params_ptr->perf_transistors;
+    elements->elem[12] = scheme_params_ptr->perfect_transformer;
     elements_params_ptr->maxnodes = scheme_params_ptr->node_count;
 }
 
@@ -141,12 +141,13 @@ void MainWindow::on_ID_OFILE_triggered()
         elements_params_ptr->writeINUN(out);
         elements_params_ptr->writeITUT(out);
         elements_params_ptr->writeINUT(out);
-        elements_params_ptr->writeBPTrans(out);
+        /*elements_params_ptr->writeBPTrans(out);
         elements_params_ptr->writeUPTrans(out);
         elements_params_ptr->writeOperAmp(out);
         elements_params_ptr->writeTransformer(out);
         elements_params_ptr->writePOAmp(out);
-//        elements_params_ptr->writePerfTrans(out);
+//        elements_params_ptr->writePerfTrans(out);*/
+        elements_params_ptr->WritePerfectTransformer(out);
         calculation_params_ptr->write(out);
         out.close();
     }
@@ -167,12 +168,13 @@ void MainWindow::on_ID_IFILE_triggered()
         elements_params_ptr->readINUN(in);
         elements_params_ptr->readITUT(in);
         elements_params_ptr->readINUT(in);
-        elements_params_ptr->readBPTrans(in);
+       /* elements_params_ptr->readBPTrans(in);
         elements_params_ptr->readUPTrans(in);
         elements_params_ptr->readOperAmp(in);
         elements_params_ptr->readTransformer(in);
-        elements_params_ptr->readPOAmp(in);
+        elements_params_ptr->readPOAmp(in);*/
 //        elements_params_ptr->readPerfTrans(in);
+        elements_params_ptr->readPerfectTransformer(in);
         calculation_params_ptr->read(in);
         in.close();
         showParams();
@@ -218,7 +220,6 @@ void MainWindow::on_ID_INTERNET_triggered()
 
 void MainWindow::on_ID_CALC_triggered()
 {
-    calculator->setSizeW();
     calculator->run();
     ui->Logger->clear();
     auto &W = calculator->getW();
@@ -251,4 +252,21 @@ void MainWindow::on_ID_CALC_triggered()
         ui->result_table->setItem(i + 1, 5, new QTableWidgetItem(std::to_string(rom[i]).c_str()));
         ui->result_table->setItem(i + 1, 6, new QTableWidgetItem(std::to_string(roa[i]).c_str()));
     }
+}
+
+void MainWindow::on_ID_CALC_MATRIX_triggered()
+{
+    calculator->calculateMatrix();
+    ui->Logger->clear();
+    auto &W = calculator->getW();
+    std::stringstream str;
+    for (size_t i = 0; i < W.getR(); ++i)
+    {
+        for (size_t j = 0; j < W.getC(); ++j)
+        {
+            str << W[i][j] << " ";
+        }
+        str << std::endl;
+    }
+    ui->Logger->setText(QString(str.str().c_str()));
 }

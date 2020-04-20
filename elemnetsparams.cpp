@@ -44,8 +44,8 @@ void ElementsParams::Init(size_t rc, size_t cc, size_t lc, size_t itunc, size_t 
     valuePOAmp.resize(poac + 1, 4);
     nodePOAmp.resize(poac + 1, 4);
 
-    valuePerfTrans.resize(ptrc + 1, 3);
-    nodePerfTrans.resize(ptrc + 1, 3);
+    valuePerfectTransformer.resize(ptrc + 1, 4);
+    nodePerfectTransformer.resize(ptrc + 1, 1);
 }
 
 void ElementsParams::writeR(std::ofstream &out)

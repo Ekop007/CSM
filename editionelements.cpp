@@ -256,49 +256,49 @@ void EditionElements::resetValue()
 void EditionElements::resistorTittle()
 {
     ui->p0->setText(QString("Сопротивление, кОм"));
-    ui->elenent_number->setMaximum(static_cast<int>(elements_params_ptr->nodeR.getR()));
+    ui->elenent_number->setMaximum(static_cast<int>(elements_params_ptr->nodeR.getR() - 1));
     ui->elenent_number->setMinimum(1);
 }
 
 void EditionElements::caparisonTitle()
 {
     ui->p0->setText(QString("Емкость, мкФ"));
-    ui->elenent_number->setMaximum(static_cast<int>(elements_params_ptr->nodeC.getR()));
+    ui->elenent_number->setMaximum(static_cast<int>(elements_params_ptr->nodeC.getR() - 1));
     ui->elenent_number->setMinimum(1);
 }
 
 void EditionElements::inductancesTitle()
 {
     ui->p0->setText(QString("Индуктивность, Гн"));
-    ui->elenent_number->setMaximum(static_cast<int>(elements_params_ptr->nodeL.getR()));
+    ui->elenent_number->setMaximum(static_cast<int>(elements_params_ptr->nodeL.getR() - 1));
     ui->elenent_number->setMinimum(1);
 }
 
 void EditionElements::ITUNTitle()
 {
     ui->p0->setText(QString("Коэффициент преобразования"));
-    ui->elenent_number->setMaximum(static_cast<int>(elements_params_ptr->nodeITUN.getR()));
+    ui->elenent_number->setMaximum(static_cast<int>(elements_params_ptr->nodeITUN.getR() - 1));
     ui->elenent_number->setMinimum(1);
 }
 
 void EditionElements::INUNTitle()
 {
     ui->p0->setText(QString("Коэффициент преобразования"));
-    ui->elenent_number->setMaximum(static_cast<int>(elements_params_ptr->nodeINUN.getR()));
+    ui->elenent_number->setMaximum(static_cast<int>(elements_params_ptr->nodeINUN.getR() - 1));
     ui->elenent_number->setMinimum(1);
 }
 
 void EditionElements::ITUTTitle()
 {
     ui->p0->setText(QString("Коэффициент преобразования"));
-    ui->elenent_number->setMaximum(static_cast<int>(elements_params_ptr->nodeITUT.getR()));
+    ui->elenent_number->setMaximum(static_cast<int>(elements_params_ptr->nodeITUT.getR() - 1));
     ui->elenent_number->setMinimum(1);
 }
 
 void EditionElements::INUTTitle()
 {
     ui->p0->setText(QString("Коэффициент преобразования"));
-    ui->elenent_number->setMaximum(static_cast<int>(elements_params_ptr->nodeINUT.getR()));
+    ui->elenent_number->setMaximum(static_cast<int>(elements_params_ptr->nodeINUT.getR() - 1));
     ui->elenent_number->setMinimum(1);
 }
 
@@ -313,7 +313,7 @@ void EditionElements::BPTransistorTitle()
     ui->p3->setText(QString("Ce"));
     ui->p4->setText(QString("Cc"));
     ui->p5->setText(QString("bt"));
-    ui->elenent_number->setMaximum(static_cast<int>(elements_params_ptr->nodeBPTrans.getR()));
+    ui->elenent_number->setMaximum(static_cast<int>(elements_params_ptr->nodeBPTrans.getR() - 1));
     ui->elenent_number->setMinimum(1);
 }
 
@@ -327,7 +327,7 @@ void EditionElements::UPTransistorTitle()
     ui->p2->setText(QString("Czs"));
     ui->p3->setText(QString("Csi"));
     ui->p4->setText(QString("S"));
-    ui->elenent_number->setMaximum(static_cast<int>(elements_params_ptr->nodeUPTrans.getR()));
+    ui->elenent_number->setMaximum(static_cast<int>(elements_params_ptr->nodeUPTrans.getR() - 1));
     ui->elenent_number->setMinimum(1);
 }
 
@@ -341,7 +341,7 @@ void EditionElements::OperAmplifierTitle()
     ui->p1->setText(QString("Ro"));
     ui->p2->setText(QString("mu"));
     ui->p3->setText(QString("ft"));
-    ui->elenent_number->setMaximum(static_cast<int>(elements_params_ptr->nodeOperAmp.getR()));
+    ui->elenent_number->setMaximum(static_cast<int>(elements_params_ptr->nodeOperAmp.getR() - 1));
     ui->elenent_number->setMinimum(1);
 }
 
@@ -356,7 +356,7 @@ void EditionElements::TransformerTitle()
     ui->p2->setText(QString("L1"));
     ui->p3->setText(QString("L2"));
     ui->p4->setText(QString("M"));
-    ui->elenent_number->setMaximum(static_cast<int>(elements_params_ptr->nodeTransformer.getR()));
+    ui->elenent_number->setMaximum(static_cast<int>(elements_params_ptr->nodeTransformer.getR() - 1));
     ui->elenent_number->setMinimum(1);
 }
 
@@ -376,7 +376,7 @@ void EditionElements::POAmplifierTitle()
     ui->np_l->setText(QString("n+"));
     ui->km_l->setText(QString("k-"));
     ui->kp_l->setText(QString("k+"));
-    ui->elenent_number->setMaximum(static_cast<int>(elements_params_ptr->nodePOAmp.getR()));
+    ui->elenent_number->setMaximum(static_cast<int>(elements_params_ptr->nodePOAmp.getR() - 1));
     ui->elenent_number->setMinimum(1);
 }
 
@@ -390,7 +390,7 @@ void EditionElements::PerfTransistorTitle()
     ui->p2->setText(QString("Коэффициент преобразования"));
     ui->p3->setText(QString("Коэффициент преобразования"));
     ui->p4->setText(QString("Коэффициент преобразования"));
-    ui->elenent_number->setMaximum(static_cast<int>(elements_params_ptr->nodePerfTrans.getR()));
+    ui->elenent_number->setMaximum(static_cast<int>(elements_params_ptr->nodePerfTrans.getR() - 1));
     ui->elenent_number->setMinimum(1);
 }
 
@@ -413,7 +413,7 @@ void EditionElements::PerfectTransformerTitle()
     ui->np_l->setText(QString("n+"));
     ui->km_l->setText(QString("k-"));
     ui->kp_l->setText(QString("k+"));
-    ui->elenent_number->setMaximum(static_cast<int>(elements_params_ptr->nodePerfectTransformer.getR()));
+    ui->elenent_number->setMaximum(static_cast<int>(elements_params_ptr->nodePerfectTransformer.getR() - 1));
     ui->elenent_number->setMinimum(1);
 }
 

@@ -71,13 +71,13 @@ struct ElementsParams
     std::vector<std::array<double, 4>> valueTranformer;
     std::vector<std::array<double, 4>> valuePOAmp;
     std::vector<std::array<double, 5>> valuePerfTrans;*/
-    MatrixT<int> nodeR; // - +
-    MatrixT<int> nodeC; // - +
-    MatrixT<int> nodeL; // - +
-    MatrixT<int> nodeITUN; // - + - +
-    MatrixT<int> nodeINUN; // - + - +
-    MatrixT<int> nodeITUT; // - + - +
-    MatrixT<int> nodeINUT; // - + - +
+    MatrixT<int> nodeR; // + -
+    MatrixT<int> nodeC; // + -
+    MatrixT<int> nodeL; // + -
+    MatrixT<int> nodeITUN; // + - + -
+    MatrixT<int> nodeINUN; // + - + -
+    MatrixT<int> nodeITUT; // + - + -
+    MatrixT<int> nodeINUT; // + - + -
     MatrixT<int> nodeBPTrans;
     MatrixT<int> nodeUPTrans;
     MatrixT<int> nodeOperAmp;

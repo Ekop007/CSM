@@ -49,6 +49,8 @@ private slots:
 
     void on_ID_CALC_triggered();
 
+    void on_ID_CALC_MATRIX_triggered();
+
 private:
     void setValues();
 

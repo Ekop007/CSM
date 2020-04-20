@@ -13,6 +13,7 @@ class Calculator
 public:
     Calculator();
 
+    void calculateMatrix();
     void run();
     void run1();
     MatrixT<complex> &getW() { return W; }
@@ -26,7 +27,6 @@ public:
     void form_BT(const complex &s);
     void form_Tr(const complex &s);
     void form_PerfTr();
-    void setSizeW();
 
     void form1_D();
     void form1_IU(); // источник * управляемы *
@@ -47,6 +47,7 @@ public:
     std::vector<double> &getF() { return f_; }
 
 private:
+    void setSizeW();
     void gauss_C();
     void st();
     void sf1(size_t step);

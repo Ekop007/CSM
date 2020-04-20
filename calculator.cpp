@@ -5,6 +5,22 @@ Calculator::Calculator() : n_(0)
 
 }
 
+void Calculator::calculateMatrix()
+{
+    setSizeW();
+    W.setAllValue(complex(0, 0));
+    n_ = scheme_params_ptr->node_count;
+    complex s(0, 2.0 * M_PI * 0);
+    form_D(s);
+    form_II(s);
+    form_UU(s);
+    form_IU(s);
+    form_UI(s);
+    form_OU(s);
+    form_PerfTr();
+    form_S();
+}
+
 void Calculator::run()
 {
     double fn = calculation_params_ptr->frequency[0];
@@ -45,6 +61,7 @@ void Calculator::run()
         }
         return size;
     };
+    setSizeW();
     kum.resize(size_function(calculation_params_ptr->flag_frequency_response));
     kua.resize(size_function(calculation_params_ptr->flag_frequency_response));
     rim.resize(size_function(calculation_params_ptr->flag_frequency_response));

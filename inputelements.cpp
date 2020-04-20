@@ -877,6 +877,15 @@ void InputElements::PerfTransistorPar()
     elements_params_ptr->nodePerfectTransformer[element_number][2] = ui->node_km->value();
 }
 
+void InputElements::PerfectTransformerPar()
+{
+    elements_params_ptr->valuePerfectTransformer[element_number][0] = ui->p0_value->value();
+    elements_params_ptr->nodePerfectTransformer[element_number][0] = ui->node_np->value();
+    elements_params_ptr->nodePerfectTransformer[element_number][1] = ui->node_nm->value();
+    elements_params_ptr->nodePerfectTransformer[element_number][2] = ui->node_kp->value();
+    elements_params_ptr->nodePerfectTransformer[element_number][3] = ui->node_km->value();
+}
+
 
 void InputElements::on_next_element_clicked()
 {
